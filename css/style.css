@@ -51,6 +51,22 @@ span {
   left: 5%;
   margin-top: 50px;
   top: 0;
+  /* animation: feed 10s infinite; */
+}
+
+@keyframes feed {
+  0% {
+    transform: translateX();
+  }
+  25% {
+
+  }
+  50% {
+
+  }
+  100% {
+
+  }
 }
 
 #stats {

@@ -5,7 +5,8 @@ class Tomagotchi {
     this.hunger = 1;
     this.fatigue = 1;
     this.boredom = 1;
-  }
+    this.time = 0;
+  };
   initTomagotchi() {
     const $tamDiv = $('<div id="tomagotchi">');
     const $img = $('<img src="http://images3.wikia.nocookie.net/__cb20070519201025/tamagotchi/images/3/32/Marutchi.png">');
@@ -29,7 +30,31 @@ class Tomagotchi {
     $('#hunger').text(`Hunger: ${this.hunger}`);
     $('#fatigue').text(`Fatigue: ${this.fatigue}`);
     $('#boredom').text(`Boredom: ${this.boredom}`);
+  };
+  setTimer() {
+    setInterval(() => {
+      this.time += 1;
+      console.log(this.time);
+    if (!(this.time % 30)) {
+      this.boredom += 1;
+      $('#boredom').text(`Boredom: ${this.boredom}`);
+      // console.log(this.boredom);
+    }
+    if (!(this.time % 45)) {
+      this.hunger += 1;
+      $('#hunger').text(`Hunger: ${this.hunger}`);
+    }
+    if (!(this.time % 100)) {
+      this.boredom += 1;
+      $('#fatigue').text(`Fatigue: ${this.fatigue}`);
+    }
+    if (!(this.time % 150)) {
+      this.age += 1;
+      $('#age').text(`Age: ${this.age}`);
+    }
+    }, 1000)
   }
+
 };
 
 $('button').on('click', (e) => {
@@ -39,4 +64,5 @@ $('button').on('click', (e) => {
   const newToma = new Tomagotchi(tomaName);
 
   newToma.initTomagotchi();
+  newToma.setTimer();
 });
