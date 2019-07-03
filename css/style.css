@@ -1,8 +1,9 @@
 body {
   text-align: center;
   font-family: 'DM Sans', sans-serif;
-  background: linear-gradient(rgb(255, 251, 202) 1%, #ffff61 40%,#ffd61f 70%) no-repeat fixed;
-  /* background-size: cover; */
+  /* background: linear-gradient(rgb(255, 251, 202) 1%, #ffff61 40%,#ffd61f 70%) no-repeat fixed; */
+  background: url("https://i.ibb.co/rmqQqMS/40440-adventure-time.jpg") no-repeat fixed center;
+  background-size: cover;
 }
 
 h1 {
@@ -19,11 +20,20 @@ span {
   font-weight: 700;
 }
 
+img {
+  width: 200px;
+}
+
 .stat {
   text-align: left;
   display: block;
+  width: 100px;
   /* float: left; */
-  margin-bottom: 2px;
+  /* margin-bottom: 2px; */
+  padding: 5px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #ffd61f;
 }
 
 .container {
@@ -40,21 +50,27 @@ span {
   left: 70%;
   border: 1px solid #ffd61f;
   border-radius: 20px;
-  /* border: dotted;
-  font-size: 15px;
-  font-weight: 500; */
+  font-weight: 500; 
+  font-size: 18px;
+}
+
+.actions:active {
+  background: grey;
 }
 
 #tomagotchi {
   text-align: center;
-  position: relative;
-  left: 5%;
-  margin-top: 50px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 37%;
+  margin-top: 250px;
+  padding-top: 0px;
   top: 0;
   /* animation: feed 10s infinite; */
 }
 
-@keyframes feed {
+/* @keyframes feed {
   0% {
     transform: translateX();
   }
@@ -67,7 +83,7 @@ span {
   100% {
 
   }
-}
+} */
 
 #stats {
   float: left;
