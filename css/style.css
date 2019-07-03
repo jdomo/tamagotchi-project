@@ -1,7 +1,8 @@
 body {
   text-align: center;
   font-family: 'DM Sans', sans-serif;
-  background: #ffff99;
+  background: linear-gradient(rgb(255, 251, 202) 1%, #ffff61 40%,#ffd61f 70%) no-repeat fixed;
+  /* background-size: cover; */
 }
 
 h1 {
@@ -13,12 +14,20 @@ h1 {
 button {
   position: absolute;
   display: inline-block;
+  padding: 20px;
   margin-top: 75px;
-  left: 45%;
+  left: 42%;
+  border: dotted;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 p {
   text-align: left;
+}
+
+span {
+  font-weight: 700;
 }
 
 .stat {
