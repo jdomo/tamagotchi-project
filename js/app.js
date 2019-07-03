@@ -10,7 +10,19 @@ class Tomagotchi {
     const $tamDiv = $('<div id="tomagotchi">');
     const $img = $('<img src="http://images3.wikia.nocookie.net/__cb20070519201025/tamagotchi/images/3/32/Marutchi.png">');
     $tamDiv.append($img);
+
+    const $actions = $('<div id="actions-div">');
+    const $feed = $('<button class="actions">Feed</button>');
+    const $lights = $('<button class="actions">Lights Out</button>');
+    const $play = $('<button class="actions">Play</button>');
+    $actions.append($feed);
+    $actions.append($lights);
+    $actions.append($play);
+    $('.container').append($actions);
+    
     $('.container').append($tamDiv);
+
+
 
     $('#name').html(`Name: <span>${this.name}</span>`);
     $('#age').text(`Age: ${this.age}`);
