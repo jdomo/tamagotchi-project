@@ -1,3 +1,4 @@
+//global variable for accessing tomagotchi
 let newToma;
 
 class Tomagotchi {
@@ -10,6 +11,7 @@ class Tomagotchi {
     this.time = 0;
   }
   initTomagotchi() {
+    //Dom element create, edit, append
     const $tamDiv = $('<div id="tomagotchi">');
     const $img = $('<img src="https://i.ibb.co/c1GfyH2/5c80f67c72f5d9028c17ed1c.png" alt="5c80f67c72f5d9028c17ed1c" border="0">');
     $tamDiv.append($img);
@@ -23,7 +25,6 @@ class Tomagotchi {
     $actions.append($lights);
     $actions.append($play);
     
-    
     $('.container').append($actions);
     $('.container').append($tamDiv);
     
@@ -33,6 +34,7 @@ class Tomagotchi {
     $('#fatigue').text(`Fatigue: ${this.fatigue}`);
     $('#boredom').text(`Boredom: ${this.boredom}`);
     
+    //action button event listeners
     $('#lights').on('click', () => {
       this.adjustVal('fatigue');
       this.adjustDomVal('#fatigue', `Fatigue: ${this.hunger}`);
@@ -49,8 +51,10 @@ class Tomagotchi {
       alert(`${this.name} is having a blast!`);
     });
   }
+
+  //intervals for vital stat increase
   statIntervals() {
-    setInterval(() => {
+    const timer = setInterval(() => {
       this.time += 1;
       console.log(this.time);
     if (!(this.time % 30)) {
@@ -66,24 +70,36 @@ class Tomagotchi {
       this.fatigue += 1;
       $('#fatigue').text(`Fatigue: ${this.fatigue}`);
     }
-    if (!(this.time % 180)) {
+    if (!(this.time % 65)) {
       this.age += 1;
       $('#age').text(`Age: ${this.age}`);
     }
 
-    this.checkLevel(this);
+
+    //if tomagotchi is dead, clear timer interval
+    const checkAlive = this.checkLevel(this);
+    console.log(`${checkAlive} <--- alive?`)
+    if (!checkAlive) {
+      clearInterval(timer);
+    }
     }, 1000);
   }
+
+  //Check vital stats for fatal levels, return false if dead
   checkLevel() {
     for (let prop in this) {
-      if (this[prop] === 10 && prop !== 'time') {
+      if (this[prop] >= 10 && prop !== 'time') {
         $('#tomagotchi').empty();
         if(confirm(`${this.name} died of ${prop}.`)) {
           window.location.reload();  
         }
+        return false;
       }
     }  
+    return true;
   }
+
+  //Action button helper functions
   adjustVal(prop) {
     this[prop] -= 2;
     if (this[prop] < 1) this[prop] = 1;
@@ -93,8 +109,9 @@ class Tomagotchi {
   }
 };
 
-//put below in game object
+//put below in game object?
 
+//Spawn tomagotchi
 $('#spawn').on('click', (e) => {
   $(e.target).hide();
 
