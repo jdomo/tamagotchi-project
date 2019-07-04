@@ -2,14 +2,21 @@ body {
   text-align: center;
   font-family: 'DM Sans', sans-serif;
   /* background: linear-gradient(rgb(255, 251, 202) 1%, #ffff61 40%,#ffd61f 70%) no-repeat fixed; */
-  background: url("https://i.ibb.co/rmqQqMS/40440-adventure-time.jpg") no-repeat fixed center;
-  background-size: cover;
+  background: url("https://i.ibb.co/rmqQqMS/40440-adventure-time.jpg") no-repeat scroll center;
+  background-size: 1800px;
+  background-position-y: -225px;
 }
 
 h1 {
   font-family: 'Barriecito', sans-serif;
   font-size: 60px;
-  margin-bottom: 2px;
+  width: 350px;
+  margin: 20px auto;
+  /* margin-bottom: 50px; */
+  padding: 2px 0;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50px;
+  box-shadow: 0px 0px 20px 20px rgba(255,255,255,0.9);
 }
 
 p {
@@ -22,6 +29,10 @@ span {
 
 img {
   width: 200px;
+}
+
+button {
+  outline: none;
 }
 
 .stat {
@@ -46,7 +57,7 @@ img {
   position: relative;
   display: block;
   padding: 10px 20px;
-  margin-top: 5px;
+  margin-top: 2px;
   left: 70%;
   border: 1px solid #ffd61f;
   border-radius: 20px;
@@ -59,9 +70,8 @@ img {
 }
 
 #tomagotchi {
-  text-align: center;
+  /* text-align: center; */
   width: 200px;
-  height: 200px;
   position: absolute;
   left: 37%;
   margin-top: 250px;
@@ -104,7 +114,7 @@ img {
   display: inline-block;
   padding: 20px;
   margin-top: 75px;
-  left: 42%;
+  left: 43%;
   border: dotted;
   font-size: 15px;
   font-weight: 500;

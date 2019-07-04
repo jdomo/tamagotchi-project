@@ -4,9 +4,9 @@ class Tomagotchi {
   constructor(name) {
     this.name = name;
     this.age = 0;
-    this.hungry = 1;
-    this.tired = 1;
-    this.bored = 1;
+    this.hunger = 1;
+    this.fatigue = 1;
+    this.boredom = 1;
     this.time = 0;
   }
   initTomagotchi() {
@@ -18,7 +18,6 @@ class Tomagotchi {
     const $feed = $('<button class="actions" id="feed">Feed</button>');
     const $lights = $('<button class="actions" id="lights">Lights Out</button>');
     const $play = $('<button class="actions" id="play">Play</button>');
-
     
     $actions.append($feed);
     $actions.append($lights);
@@ -30,12 +29,24 @@ class Tomagotchi {
     
     $('#name').html(`Name: <span>${this.name}</span>`);
     $('#age').text(`Age: ${this.age}`);
-    $('#hunger').text(`Hunger: ${this.hungry}`);
-    $('#fatigue').text(`Fatigue: ${this.tired}`);
-    $('#boredom').text(`Boredom: ${this.bored}`);
+    $('#hunger').text(`Hunger: ${this.hunger}`);
+    $('#fatigue').text(`Fatigue: ${this.fatigue}`);
+    $('#boredom').text(`Boredom: ${this.boredom}`);
     
-    $('#lights').on('click', (e) => {
-      console.log(e.target); 
+    $('#lights').on('click', () => {
+      this.adjustVal('fatigue');
+      this.adjustDomVal('#fatigue', `Fatigue: ${this.hunger}`);
+      alert(`${this.name} is taking a nap.`); 
+    });
+    $('#feed').on('click', () => {
+      this.adjustVal('hunger');
+      this.adjustDomVal('#hunger', `Hunger: ${this.hunger}`);
+      alert(`${this.name} is having a snack.`); 
+    });
+    $('#play').on('click', () => {
+      this.adjustVal('boredom');
+      this.adjustDomVal('#boredom', `Boredom: ${this.boredom}`);
+      alert(`${this.name} is having a blast!`);
     });
   }
   statIntervals() {
@@ -43,17 +54,17 @@ class Tomagotchi {
       this.time += 1;
       console.log(this.time);
     if (!(this.time % 30)) {
-      this.bored += 1;
-      $('#boredom').text(`Boredom: ${this.bored}`);
+      this.boredom += 1;
+      $('#boredom').text(`Boredom: ${this.boredom}`);
       // console.log(this.boredom);
     }
     if (!(this.time % 45)) {
-      this.hungry += 1;
-      $('#hunger').text(`Hunger: ${this.hungry}`);
+      this.hunger += 1;
+      $('#hunger').text(`Hunger: ${this.hunger}`);
     }
     if (!(this.time % 100)) {
-      this.tired += 1;
-      $('#fatigue').text(`Fatigue: ${this.tired}`);
+      this.fatigue += 1;
+      $('#fatigue').text(`Fatigue: ${this.fatigue}`);
     }
     if (!(this.time % 180)) {
       this.age += 1;
@@ -65,10 +76,20 @@ class Tomagotchi {
   }
   checkLevel() {
     for (let prop in this) {
-      if (this[prop] === 10 && (prop !== 'time')) {
-        alert(`${this.name} died, they were too ${prop}.`);
+      if (this[prop] === 10 && prop !== 'time') {
+        $('#tomagotchi').empty();
+        if(confirm(`${this.name} died of ${prop}.`)) {
+          window.location.reload();  
+        }
       }
     }  
+  }
+  adjustVal(prop) {
+    this[prop] -= 2;
+    if (this[prop] < 1) this[prop] = 1;
+  }
+  adjustDomVal(id, val) {
+    $(id).text(val);
   }
 };
 
