@@ -119,7 +119,7 @@ button {
   left: 40%;
 }
 
-#play-jake {
+.play-jake {
   animation: play 1s 0s 5;
 }
 

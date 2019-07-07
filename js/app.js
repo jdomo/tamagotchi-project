@@ -91,11 +91,11 @@ class Tomagotchi {
     if (this.sleeping) {
       console.log(`timer started at ${this.timerStart}`);
       $('body').attr('id', 'night-bg');
-      $('.tomagotchi img').attr('src', 'https://i.ibb.co/TRrPHjv/sleeppocketjake.png');
+      $('#jake').attr('src', 'https://i.ibb.co/TRrPHjv/sleeppocketjake.png');
       $('.tomagotchi').attr('id', 'sleeping-jake');
       if ((this.time - this.timerStart) === 5) {
         $('body').removeAttr('id');
-        $('.tomagotchi img').attr('src', 'https://i.ibb.co/c1GfyH2/5c80f67c72f5d9028c17ed1c.png');
+        $('#jake').attr('src', 'https://i.ibb.co/c1GfyH2/5c80f67c72f5d9028c17ed1c.png');
         $('.tomagotchi').removeAttr('id');
         this.sleeping = false;
       }
@@ -103,11 +103,11 @@ class Tomagotchi {
 
     if (this.playing) {
       console.log(`timer started at ${this.timerStart}`);
-      $('.tomagotchi img').attr('src', 'https://i.ibb.co/T0Zf69Q/35073-7-adventure-time-transparent-image.png');
-      $('.tomagotchi img').attr('id', 'play-jake');
+      $('#jake').attr('src', 'https://i.ibb.co/T0Zf69Q/35073-7-adventure-time-transparent-image.png');
+      $('#jake').attr('class', 'play-jake');
       if ((this.time - this.timerStart) === 6) {
-        $('.tomagotchi img').removeAttr('id');
-        $('.tomagotchi img').attr('src', 'https://i.ibb.co/c1GfyH2/5c80f67c72f5d9028c17ed1c.png');
+        $('#jake').removeAttr('class');
+        $('#jake').attr('src', 'https://i.ibb.co/c1GfyH2/5c80f67c72f5d9028c17ed1c.png');
         this.playing = false;
       }
     }
