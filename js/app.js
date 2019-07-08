@@ -93,7 +93,7 @@ class Tomagotchi {
       $('body').attr('id', 'night-bg');
       $('#jake').attr('src', 'https://i.ibb.co/TRrPHjv/sleeppocketjake.png');
       $('.tomagotchi').attr('id', 'sleeping-jake');
-      if ((this.time - this.timerStart) === 5) {
+      if ((this.time - this.timerStart) === 20) {
         $('body').removeAttr('id');
         $('#jake').attr('src', 'https://i.ibb.co/c1GfyH2/5c80f67c72f5d9028c17ed1c.png');
         $('.tomagotchi').removeAttr('id');
@@ -105,7 +105,7 @@ class Tomagotchi {
       console.log(`timer started at ${this.timerStart}`);
       $('#jake').attr('src', 'https://i.ibb.co/T0Zf69Q/35073-7-adventure-time-transparent-image.png');
       $('#jake').attr('class', 'play-jake');
-      if ((this.time - this.timerStart) === 6) {
+      if ((this.time - this.timerStart) === 30) {
         $('#jake').removeAttr('class');
         $('#jake').attr('src', 'https://i.ibb.co/c1GfyH2/5c80f67c72f5d9028c17ed1c.png');
         this.playing = false;
@@ -116,7 +116,7 @@ class Tomagotchi {
       console.log(`timer started at ${this.timerStart}`);
       $('#jake').css('opacity', 0);
       $('#eating-jake-overlay').css('opacity', 1);
-      if ((this.time - this.timerStart) === 4) {
+      if ((this.time - this.timerStart) === 20) {
         $('#eating-jake-overlay').css('opacity', 0);
         $('#jake').css('opacity', 1);
         this.eating = false;
@@ -128,17 +128,20 @@ class Tomagotchi {
     if (!checkAlive) {
       clearInterval(timer);
     }
-    }, 1000);
+    }, 100);
   }
 
   //Check vital stats for fatal levels, return false if dead
   checkLevel() {
     for (let prop in this) {
       if (this[prop] >= 10 && prop !== 'time' && prop !== 'timerStart') {
-        $('.tomagotchi').empty();
-        if(confirm(`${this.name} died of ${prop}.`)) {
-          window.location.reload();  
-        }
+        // $('.tomagotchi').empty();
+        $('#jake').attr('src', 'https://i.ibb.co/QNV5pt1/zombie-clipart-zombie-lady-7.png');
+        setTimeout(() => {
+          if(confirm(`${this.name} died of ${prop}.`)) {
+            window.location.reload();  
+          }
+        }, 3000);
         return false;
       }
     }  
